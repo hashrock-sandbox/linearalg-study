@@ -47,9 +47,27 @@ function transpose(model, x, y){
 	})
 }
 
-var model = scale(model, 50);
+function drawAxis(x0, y0, x1, y1){
+	ctx.beginPath();
+	
+	ctx.moveTo((x1 - x0) / 2, y0);
+	ctx.lineTo((x1 - x0) / 2, y1);
+	ctx.stroke();
+	ctx.moveTo(x0, (y1 - y0) / 2);
+	ctx.lineTo(x1, (y1 - y0) / 2);
+	ctx.stroke();
+
+}
 var viewWidth = 300;
 var viewHeight = 300;
+
+var model = scale(model, 50);
+
+
+ctx.strokeStyle = "gray";
+drawAxis(0, 0, viewWidth, viewHeight);
+
+
 ctx.strokeStyle = "blue";
 drawRect(transpose(model, viewWidth / 2, viewHeight / 2));
 ctx.strokeStyle = "red";
